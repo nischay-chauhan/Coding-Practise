@@ -45,6 +45,7 @@ int main(){
     root->left->right = newNode(4);
     root->right->left = newNode(4);
     root->right->right = newNode(3);
+    printTree(root);
     if(isMirror(root , root)){
         cout << "Tree is Symmetric"<<endl;
     }else{

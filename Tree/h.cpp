@@ -49,11 +49,11 @@ bool isBST(node* root) {
 
 int main()
 {
-    node *root = newNode(4);
-    root->left = newNode(2);
-    root->right = newNode(5);
-    root->left->left = newNode(0);
-    root->left->right = newNode(3);
+    node *root = newNode(10);
+    root->left = newNode(5);
+    root->right = newNode(15);
+    root->left->left = newNode(6);
+    root->left->right = newNode(20);
 
     cout << "Binary Tree: ";
     printTree(root);

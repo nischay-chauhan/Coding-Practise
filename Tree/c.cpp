@@ -39,6 +39,16 @@ void printTree(node* root){
     printTree(root->right);
 }
 
+void PreOrder(node* root){
+    if(root == NULL){
+        return;
+    }
+    cout << root->data << " ";
+    PreOrder(root->left);
+    PreOrder(root->right);
+    
+}
+
 int main(){
     node* root = newNode(1);
     root->left = newNode(2);

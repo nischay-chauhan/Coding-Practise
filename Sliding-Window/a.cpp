@@ -3,7 +3,7 @@ Given an array and an integer K, find the maximum for each and every contiguous 
 */
 /* Maximum of all subarrays of size K using Max-Heap: 
 */
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 vector<int> maxSlidingWindow(vector<int>& arr, int k)

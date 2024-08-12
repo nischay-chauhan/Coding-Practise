@@ -2,7 +2,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define console_log(x) std::cout << x << std::endl
 
 int ksubarrayWithXor( vector<int> arr, int K){
     int n = arr.size();

@@ -23,6 +23,22 @@ int maxLenSubWithKSum(vector<int> arr, int k){
     return maxLen;
 }
 
+int maxLen(vector<int> arr){
+    unordered_set<int> s;
+    int left = 0;
+    int len = 0;
+    for(int right = 0; right < arr.size(); right++){
+        while(s.find(arr[right]) != s.end()){
+            s.erase(arr[left]);
+            left++;
+        }
+        s.insert(arr[right]);
+        len = max(len, right - left + 1);
+    }
+    return len;
+}
+
 int main(){
-    vector<int> arr = {}
+    vector<int> arr = {1 ,2  , 3, 4 ,5  , 10 , 12};
+    cout << maxLen(arr );
 }

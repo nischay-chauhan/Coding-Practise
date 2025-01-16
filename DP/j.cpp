@@ -19,6 +19,8 @@ int solve(int ind , vector<int>& height , vector<int>& dp){
     return dp[ind] = min(jumpOne , jumpTwo);
 }
 
+
+
 int main(){
     vector<int> height {30 , 10 , 60 , 10 , 60 , 50};
     int n = height.size();

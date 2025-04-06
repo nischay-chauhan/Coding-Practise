@@ -1,3 +1,33 @@
+# Coding Practise
+
+This repository contains various coding practice problems and their solutions in C++. 
+
+## Directory Structure
+
+- **BFS/**: Contains implementations of the Breadth-First Search algorithm.
+  - `a.cpp`: Implementation of BFS using an adjacency list representation.
+  
+- **Greedy/**: Contains implementations of greedy algorithms.
+  - `a.cpp`, `b.cpp`, `c.cpp`, `d.cpp`, `e.cpp`: Various greedy algorithm implementations.
+
+## BFS Implementation
+
+The BFS implementation is located in the `BFS/a.cpp` file. This program demonstrates how to perform a breadth-first search on a graph represented as an adjacency list. 
+
+### How It Works
+
+1. **Graph Representation**: The graph is represented using an adjacency list.
+2. **BFS Function**: The `bfs` function performs the traversal starting from a specified node and prints the nodes in the order they are visited.
+3. **Adding Edges**: The `addEdge` function allows for the addition of directed edges between nodes.
+
+### Compilation and Execution
+
+To compile and run the BFS program, follow these steps:
+
+```bash
+g++ BFS/a.cpp -o bfs
+./bfs
+```
 # 🌟 Coding Practice Repository 🌟
 
 Welcome to **Coding-Practise**, a space dedicated to honing problem-solving skills and mastering algorithms. 🚀 This repository is my personal journey through Data Structures and Algorithms (DSA), coding challenges, and creative problem-solving ideas. 💡  

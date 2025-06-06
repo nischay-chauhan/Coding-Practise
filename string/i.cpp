@@ -6,11 +6,8 @@ using namespace std;
 
 vector<string> allLexicographicNextPermutations(string str) {
     vector<string> result;
-
-    // Step 1: Sort the string
     sort(str.begin(), str.end());
 
-    // Step 2: Keep generating next permutations
     do {
         result.push_back(str);
     } while (next_permutation(str.begin(), str.end()));

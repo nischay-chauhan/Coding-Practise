@@ -31,7 +31,8 @@ class Solution{
                 }
             }
 
-            int vis[V] = {0};
+            int vis[V];
+            memset(vis , 0 , sizeof(vis));
             int cnt = 0;
             for(int i =0 ; i < V ; i++){
                 if(!vis[i]){

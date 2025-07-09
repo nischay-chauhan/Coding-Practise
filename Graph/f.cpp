@@ -1,70 +1,55 @@
-/* djikstra algorithm */
-#include <algorithm>
-#include <queue>
-#include <vector>
-#include <climits>
-#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
 
-vector<int> dijkstra(vector<vector<pair<int, int>>>& graph, int src, int dest) {
-    int n = graph.size();
-    vector<int> dist(n, INT_MAX), parent(n, -1);
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+int findCheapestFlight(int n, vector<vector<int>>& flights, int src, int dest, int k) {
+    vector<vector<pair<int, int>>> adj(n);
+    for (const auto& flight : flights) {
+        adj[flight[0]].push_back({flight[1], flight[2]});
+    }
     
-    dist[src] = 0;
-    pq.push({0, src});
+    // Min-heap: {cost, current_node, stops_used}
+    priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+    // {node, stops} -> min cost to reach
+    vector<vector<int>> dist(n, vector<int>(k + 2, INT_MAX));
+    
+    // Start from source with 0 cost and 0 stops
+    pq.push({0, src, 0});
+    dist[src][0] = 0;
     
     while (!pq.empty()) {
-        int u = pq.top().second;
-        int d = pq.top().first;
+        auto curr = pq.top();
         pq.pop();
-        if (d > dist[u]) continue;
-        for (auto& [v, w] : graph[u]) {
-            if (dist[u] + w < dist[v]) {
-                dist[v] = dist[u] + w;
-                parent[v] = u;
-                pq.push({dist[v], v});
+        int cost = curr[0];
+        int node = curr[1];
+        int stops = curr[2];
+        
+        if (node == dest) return cost;
+        
+        if (stops > k) continue;
+        
+        for (const auto& [neighbor, price] : adj[node]) {
+            int newCost = cost + price;
+            int newStops = stops + 1;
+            
+            // If we found a cheaper path with <= k stops
+            if (newCost < dist[neighbor][newStops] && newStops <= k + 1) {
+                dist[neighbor][newStops] = newCost;
+                pq.push({newCost, neighbor, newStops});
             }
         }
     }
     
-    // Reconstruct path
-    vector<int> path;
-    if (dist[dest] == INT_MAX) {
-        return path;
-    }
-    for (int at = dest; at != -1; at = parent[at]) {
-        path.push_back(at);
-    }
-    reverse(path.begin(), path.end());
-    return path;
+    return -1;
 }
 
 int main() {
-    int n, m;
-    std::cout << "Enter number of nodes and edges: ";
-    std::cin >> n >> m;
-    std::vector<std::vector<std::pair<int, int>>> graph(n);
-    std::cout << "Enter edges (u v w) as 0-based indices and weight:\n";
-    for (int i = 0; i < m; ++i) {
-        int u, v, w;
-        std::cin >> u >> v >> w;
-        graph[u].push_back({v, w});
-        // Uncomment next line for undirected graph:
-        // graph[v].push_back({u, w});
-    }
-    int src, dest;
-    std::cout << "Enter source and destination (0-based): ";
-    std::cin >> src >> dest;
-    std::vector<int> path = dijkstra(graph, src, dest);
-    if (path.empty()) {
-        std::cout << "No path found from " << src << " to " << dest << ".\n";
-    } else {
-        std::cout << "Shortest path: ";
-        for (size_t i = 0; i < path.size(); ++i) {
-            std::cout << path[i];
-            if (i + 1 < path.size()) std::cout << " -> ";
-        }
-        std::cout << "\n";
-    }
+    int n = 4;
+    vector<vector<int>> flights = {{0,1,200}, {1,2,100}, {1,3,300}, {2,3,100}};
+    int src = 0, dest = 3, k = 1;
+    
+    int result = findCheapestFlight(n, flights, src, dest, k);
+    cout << "Cheapest price from " << src << " to " << dest 
+         << " with at most " << k << " stops: " << result << endl;
+    
     return 0;
 }

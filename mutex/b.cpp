@@ -2,7 +2,7 @@
 #include <thread>
 #include <vector>
 #include <mutex>
-#include <semaphore> // Requires C++20
+#include <semaphore>
 
 std::mutex mtx;
 std::counting_semaphore<3> sem(3); // Allow up to 3 threads in the critical section

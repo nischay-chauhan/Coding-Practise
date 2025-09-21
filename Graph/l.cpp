@@ -16,6 +16,7 @@ class Solution{
                 for(int j = 0 ; j < COLS; j++){
                     if(grid[i][j] == '1'){
                         islands++;   
+                        dfs(i , j , grid);
                     }
                 }
             }

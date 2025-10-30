@@ -6,19 +6,19 @@ using namespace std;
 
 class Stack {
 private:
-    int* arr;  // Array to hold stack elements
-    int top;   // Index of the top element
-    int capacity;  // Maximum number of elements stack can hold
+    int* arr;  
+    int top;   
+    int capacity; 
 
 public:
     Stack(int size) {
         arr = new int[size];
         capacity = size;
-        top = -1;  // Stack is initially empty
+        top = -1;  
     }
 
     ~Stack() {
-        delete[] arr;  // Free allocated memory
+        delete[] arr; 
     }
 
     void push(int x) {
@@ -32,7 +32,7 @@ public:
     int pop() {
         if (top == -1) {
             std::cout << "Stack Underflow" << std::endl;
-            return -1;  // Indicate error
+            return -1; 
         }
         return arr[top--];
     }
@@ -40,7 +40,7 @@ public:
     int peek() {
         if (top == -1) {
             std::cout << "Stack is empty" << std::endl;
-            return -1;  // Indicate error
+            return -1; 
         }
         return arr[top];
     }

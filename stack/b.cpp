@@ -11,7 +11,6 @@ struct Node {
     }
 };
 
-// Stack class using linked list
 class Stack {
 private:
     Node* top;

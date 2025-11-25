@@ -19,7 +19,6 @@ int findAllSubarraysWithGivenSum(vector<int>& arr, int k) {
         }
         end++;
    }
-
     return count;
 }
 
